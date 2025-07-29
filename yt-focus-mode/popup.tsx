@@ -1,0 +1,163 @@
+import { useState } from "react"
+
+function IndexPopup() {
+  const [focusModeEnabled, setFocusModeEnabled] = useState(false)
+
+  const handleToggle = () => {
+    setFocusModeEnabled(prev => !prev)
+  }
+
+  const openSettings = () => {
+    // TODO: Open settings page
+    console.log("Opening settings page")
+  }
+  return (
+    <div
+      style={{
+        width: 320,
+        minHeight: 200,
+        backgroundColor: "#0f0f0f",
+        color: "#fff",
+        fontFamily: "Roboto, Arial, sans-serif",
+        fontSize: 14,
+        position: "relative"
+      }}>
+      {/* Header with settings button */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "16px 16px 8px 16px",
+          borderBottom: "1px solid #272727",
+          backgroundColor: "#3c1717ff",
+        }}>
+        <h3
+          style={{
+            margin: 0,
+            fontSize: 16,
+            fontWeight: 500
+          }}>
+          YouTube Focus Mode
+        </h3>
+        <button
+          onClick={openSettings}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#aaa",
+            cursor: "pointer",
+            padding: 8,
+            borderRadius: 20,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 36,
+            height: 36,
+            transition: "background-color 0.2s"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#272727"
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "transparent"
+          }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+          </svg>
+        </button>
+      </div>
+
+      {/* Main content */}
+      <div
+        style={{
+          padding: "24px 16px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 20
+        }}>
+        {/* Focus Mode Toggle */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 16
+          }}>
+          <div
+            style={{
+              fontSize: 18,
+              fontWeight: 500,
+              textAlign: "center"
+            }}>
+            Focus Mode
+          </div>
+          
+          {/* Big Toggle Switch */}
+          <div
+            onClick={handleToggle}
+            style={{
+              width: 80,
+              height: 40,
+              backgroundColor: focusModeEnabled ? "#ff0000" : "#3e3e3e",
+              borderRadius: 20,
+              position: "relative",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+              border: focusModeEnabled ? "2px solid #ff0000" : "2px solid #717171"
+            }}>
+            <div
+              style={{
+                width: 32,
+                height: 32,
+                backgroundColor: "#fff",
+                borderRadius: "50%",
+                position: "absolute",
+                top: 2,
+                left: focusModeEnabled ? 44 : 2,
+                transition: "left 0.3s ease",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.3)"
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              fontSize: 13,
+              color: "#aaa",
+              textAlign: "center",
+              maxWidth: 280
+            }}>
+            {focusModeEnabled 
+              ? "Focus mode is ON - Distracting content will be filtered" 
+              : "Focus mode is OFF - All content will be shown"
+            }
+          </div>
+        </div>
+
+        {/* Status indicator */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            fontSize: 12,
+            color: focusModeEnabled ? "#4caf50" : "#757575"
+          }}>
+          <div
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              backgroundColor: focusModeEnabled ? "#4caf50" : "#757575"
+            }}
+          />
+          {focusModeEnabled ? "Active" : "Inactive"}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default IndexPopup
