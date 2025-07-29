@@ -13,17 +13,22 @@ function IndexPopup() {
     // TODO: Open settings page
     console.log("Opening settings page")
   }
+
+  
+
   return (
     <div
       style={{
         backgroundColor: "#FFE0A2",
         width: 350,
         minHeight: 440,
+        margin: -7,
+
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
       }}>
-        <Bulb />
+      <Bulb />
     </div>
   )
 }
