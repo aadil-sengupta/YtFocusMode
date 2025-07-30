@@ -8,7 +8,13 @@ import { useFocusMode } from '@/contexts/FocusModeContext';
 // Register GSAP plugins
 gsap.registerPlugin(Draggable, MorphSVGPlugin);
 
-const BulbComponent: React.FC = () => {
+interface BulbComponentProps {
+  style?: React.CSSProperties;
+  className?: string;
+  [key: string]: any;
+}
+
+const BulbComponent: React.FC<BulbComponentProps> = ({ style, className, ...props }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const { isFocusMode, toggleFocusMode } = useFocusMode();
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -159,7 +165,11 @@ const BulbComponent: React.FC = () => {
   }, [isFocusMode]);
 
   return (
-    <div className="bulb-container">
+    <div 
+      className={`bulb-container ${className || ''}`} 
+      style={style}
+      {...props}
+    >
       <style>{`
         * {
           box-sizing: border-box;
@@ -452,6 +462,6 @@ const BulbComponent: React.FC = () => {
   );
 };
 
-export default function Bulb() {
-  return <BulbComponent />;
+export default function Bulb({ style, className, ...props }: BulbComponentProps = {}) {
+  return <BulbComponent style={style} className={className} {...props} />;
 }
