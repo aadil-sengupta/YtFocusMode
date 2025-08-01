@@ -1,0 +1,277 @@
+/* Settings page styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.settings-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg-color);
+  transition: background-color 0.4s ease;
+}
+
+.left-panel {
+  flex: 1;
+  max-width: 500px;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.4s ease;
+  line-height: 1.5;
+}
+
+.content {
+  flex: 1;
+}
+
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section h2 {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  transition: color 0.4s ease;
+}
+
+.setting-item {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.setting-item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.setting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.setting-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+}
+
+.setting-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 32px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch-bg);
+  transition: .4s;
+  border-radius: 32px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: var(--switch-active);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.status-on {
+  background: var(--status-on-bg);
+  color: var(--status-on-text);
+}
+
+.status-off {
+  background: var(--status-off-bg);
+  color: var(--status-off-text);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-primary);
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  background: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.bulb-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bulb-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bulb-glow) 0%, transparent 70%);
+  opacity: var(--glow-opacity);
+  transition: all 0.4s ease;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: var(--glow-opacity); 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: calc(var(--glow-opacity) * 1.5); 
+  }
+}
+
+/* CSS Variables for theming */
+:root {
+  --bg-color: hsl(220, 30%, 15%);
+  --text-primary: hsla(220, 24%, 57%, 1.00);
+  --text-secondary: hsla(220, 24%, 70%, 1.00);
+  --card-bg: hsla(220, 30%, 18%, 1.00);
+  --border-color: hsla(220, 24%, 25%, 1.00);
+  --border-hover: hsla(220, 24%, 35%, 1.00);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --switch-bg: hsla(220, 24%, 35%, 1.00);
+  --switch-active: hsla(220, 24%, 57%, 1.00);
+  --status-on-bg: hsla(120, 50%, 20%, 1.00);
+  --status-on-text: hsla(120, 50%, 70%, 1.00);
+  --status-off-bg: hsla(0, 50%, 20%, 1.00);
+  --status-off-text: hsla(0, 50%, 70%, 1.00);
+  --bulb-glow: hsla(220, 24%, 57%, 0.3);
+  --glow-opacity: 0.4;
+}
+
+.focus-mode {
+  --bg-color: hsl(45, 30%, 92%);
+  --text-primary: hsla(43, 100%, 14%, 1.00);
+  --text-secondary: hsla(43, 100%, 14%, 0.7);
+  --card-bg: hsla(45, 30%, 96%, 1.00);
+  --border-color: hsla(43, 100%, 14%, 0.15);
+  --border-hover: hsla(43, 100%, 14%, 0.25);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --switch-bg: hsla(43, 100%, 14%, 0.3);
+  --switch-active: hsla(43, 100%, 14%, 1.00);
+  --status-on-bg: hsla(120, 50%, 90%, 1.00);
+  --status-on-text: hsla(120, 50%, 30%, 1.00);
+  --status-off-bg: hsla(0, 50%, 90%, 1.00);
+  --status-off-text: hsla(0, 50%, 30%, 1.00);
+  --bulb-glow: hsla(43, 100%, 14%, 0.3);
+  --glow-opacity: 0.6;
+}

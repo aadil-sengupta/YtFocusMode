@@ -6,7 +6,7 @@ import SettingsCog from "@/assets/icons/SettingsCog.tsx"
 
 
 function AppContent() {
-  const { isFocusMode } = useFocusMode();
+  const { isFocusMode, openSettings } = useFocusMode();
   
   return (
     <div style={{
@@ -22,6 +22,8 @@ function AppContent() {
           ? 'hsl(45, 30%, 92%)' 
           : 'hsl(220, 30%, 15%)',
         transition: 'background 0.4s ease',
+
+// Add a border
       }} >
         <div>
           <SettingsCog style={{
@@ -34,7 +36,8 @@ function AppContent() {
             position: "absolute",
             top: 29,
             right: 25,
-          }} />
+            cursor: 'pointer',
+          }} onClick={openSettings} />
         </div>
       <Shelf1 style={{
         position: "absolute",

@@ -18,4 +18,12 @@ export default defineManifest({
     js: ['src/content/main.tsx'],
     matches: ['https://*/*'],
   }],
+  web_accessible_resources: [{
+    resources: ['src/settings/settings.html'],
+    matches: ['<all_urls>'],
+  }],
+  permissions: [
+    'storage',
+    'tabs'
+  ],
 })
