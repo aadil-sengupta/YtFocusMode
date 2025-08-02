@@ -27,25 +27,35 @@ export const FocusModeProvider: React.FC<FocusModeProviderProps> = ({ children }
   useEffect(() => {
     if (typeof chrome !== 'undefined' && chrome.storage) {
       chrome.storage.sync.get(['isFocusMode'], (result) => {
-        setIsFocusMode(result.isFocusMode || false);
+        if (result.isFocusMode !== undefined) {
+          setIsFocusMode(result.isFocusMode);
+        }
       });
     }
   }, []);
 
   const toggleFocusMode = () => {
-    const newValue = !isFocusMode;
-    setIsFocusMode(newValue);
-    
-    // Save to Chrome storage
-    if (typeof chrome !== 'undefined' && chrome.storage) {
-      chrome.storage.sync.set({ isFocusMode: newValue });
-    }
+    setIsFocusMode(prev => {
+      const newValue = !prev;
+      console.log('Focus mode toggled:', newValue);
+
+      // Save to Chrome storage asynchronously
+      if (typeof chrome !== 'undefined' && chrome.storage) {
+        chrome.storage.sync.set({ isFocusMode: newValue }, () => {
+          if (chrome.runtime.lastError) {
+            console.error('Error saving focus mode state:', chrome.runtime.lastError);
+          }
+        });
+      }
+
+      return newValue;
+    });
   };
 
   const openSettings = () => {
     if (typeof chrome !== 'undefined' && chrome.tabs) {
       chrome.tabs.create({
-        url: chrome.runtime.getURL('src/settings/settings.html')
+        url: chrome.runtime.getURL('src/settings/index.html')
       });
     }
   };

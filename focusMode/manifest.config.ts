@@ -19,7 +19,7 @@ export default defineManifest({
     matches: ['https://*/*'],
   }],
   web_accessible_resources: [{
-    resources: ['src/settings/settings.html'],
+    resources: ['src/settings/index.html'],
     matches: ['<all_urls>'],
   }],
   permissions: [
