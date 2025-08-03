@@ -169,7 +169,7 @@ function SettingsContent() {
   };
 
   // Recommended websites with full support
-  const recommendedWebsites = ['youtube.com', 'youtu.be'];
+  const recommendedWebsites = ['youtube.com'];
   
   // Check if a website is recommended
   const isRecommended = (website: string) => {
@@ -801,33 +801,51 @@ function SettingsContent() {
                                   const newWebsites = allowedWebsites.filter(w => w !== website);
                                   handleAllowedWebsitesChange(newWebsites);
                                 }}
+                                disabled={website === 'youtube.com'}
                                 style={{
-                                  background: isFocusMode 
-                                    ? 'hsla(0, 50%, 90%, 1.00)' 
-                                    : 'hsla(0, 50%, 25%, 1.00)',
-                                  color: isFocusMode 
-                                    ? 'hsla(0, 50%, 30%, 1.00)' 
-                                    : 'hsla(0, 50%, 85%, 1.00)',
-                                  border: `1px solid ${isFocusMode 
-                                    ? 'hsla(0, 50%, 70%, 0.5)' 
-                                    : 'hsla(0, 50%, 40%, 1.00)'}`,
+                                  background: website === 'youtube.com' 
+                                    ? (isFocusMode 
+                                      ? 'hsla(43, 100%, 14%, 0.1)' 
+                                      : 'hsla(220, 24%, 30%, 0.5)')
+                                    : (isFocusMode 
+                                      ? 'hsla(0, 50%, 90%, 1.00)' 
+                                      : 'hsla(0, 50%, 25%, 1.00)'),
+                                  color: website === 'youtube.com'
+                                    ? (isFocusMode 
+                                      ? 'hsla(43, 100%, 14%, 0.4)' 
+                                      : 'hsla(220, 24%, 50%, 1.00)')
+                                    : (isFocusMode 
+                                      ? 'hsla(0, 50%, 30%, 1.00)' 
+                                      : 'hsla(0, 50%, 85%, 1.00)'),
+                                  border: `1px solid ${website === 'youtube.com'
+                                    ? (isFocusMode 
+                                      ? 'hsla(43, 100%, 14%, 0.2)' 
+                                      : 'hsla(220, 24%, 40%, 0.5)')
+                                    : (isFocusMode 
+                                      ? 'hsla(0, 50%, 70%, 0.5)' 
+                                      : 'hsla(0, 50%, 40%, 1.00)')}`,
                                   borderRadius: '6px',
                                   padding: '6px 12px',
                                   fontSize: '0.85rem',
                                   fontWeight: 500,
-                                  cursor: 'pointer',
+                                  cursor: website === 'youtube.com' ? 'not-allowed' : 'pointer',
                                   transition: 'all 0.2s ease',
+                                  opacity: website === 'youtube.com' ? 0.6 : 1,
                                 }}
                                 onMouseEnter={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(-1px)';
-                                  e.currentTarget.style.boxShadow = '0 2px 4px hsla(0, 50%, 50%, 0.2)';
+                                  if (website !== 'youtube.com') {
+                                    e.currentTarget.style.transform = 'translateY(-1px)';
+                                    e.currentTarget.style.boxShadow = '0 2px 4px hsla(0, 50%, 50%, 0.2)';
+                                  }
                                 }}
                                 onMouseLeave={(e) => {
-                                  e.currentTarget.style.transform = 'translateY(0px)';
-                                  e.currentTarget.style.boxShadow = 'none';
+                                  if (website !== 'youtube.com') {
+                                    e.currentTarget.style.transform = 'translateY(0px)';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                  }
                                 }}
                               >
-                                Remove
+                                {website === 'youtube.com' ? 'Default' : 'Remove'}
                               </button>
                             </div>
                           );
@@ -847,7 +865,7 @@ function SettingsContent() {
                       </div>
                     )}
                     
-                    {/* Add Custom Website Section - Integrated */}
+                    {/* Add Custom Website Section - Coming Soon */}
                     <div style={{
                       borderTop: `1px solid ${isFocusMode 
                         ? 'hsla(43, 100%, 14%, 0.2)' 
@@ -859,53 +877,60 @@ function SettingsContent() {
                         fontSize: '1rem',
                         fontWeight: 600,
                         color: isFocusMode 
-                          ? 'hsla(43, 100%, 14%, 1.00)' 
-                          : 'hsla(220, 24%, 85%, 1.00)',
+                          ? 'hsla(43, 100%, 14%, 0.6)' 
+                          : 'hsla(220, 24%, 60%, 1.00)',
                         marginBottom: '8px',
                         transition: 'color 0.4s ease',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
                       }}>
-                        <span style={{ color: 'hsla(45, 80%, 45%, 1.00)' }}>⚠️</span>
+                        <span style={{ color: 'hsla(200, 80%, 50%, 1.00)' }}>🔮</span>
                         Add Custom Website
                       </div>
                       <div style={{
                         color: isFocusMode 
-                          ? 'hsla(43, 100%, 14%, 0.7)' 
-                          : 'hsla(220, 24%, 70%, 1.00)',
+                          ? 'hsla(43, 100%, 14%, 0.5)' 
+                          : 'hsla(220, 24%, 50%, 1.00)',
                         fontSize: '0.9rem',
                         marginBottom: '16px',
                         transition: 'color 0.4s ease',
+                        fontStyle: 'italic',
                       }}>
-                        Add any website with experimental support. These may have limited functionality.
+                        Coming soon! Custom website support will be available in a future update.
                       </div>
                       
-                      <TagInput
-                        value={[]}
-                        onChange={(newWebsites) => {
-                          if (newWebsites.length > 0) {
-                            const websiteToAdd = newWebsites[0].toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '');
-                            if (!allowedWebsites.includes(websiteToAdd)) {
-                              handleAllowedWebsitesChange([...allowedWebsites, websiteToAdd]);
-                            }
-                          }
-                        }}
-                        placeholder="Enter domain name (e.g., example.com)"
-                        isFocusMode={isFocusMode}
-                      />
-                      
                       <div style={{
-                        fontSize: '0.8rem',
-                        color: isFocusMode 
-                          ? 'hsla(43, 100%, 14%, 0.6)' 
-                          : 'hsla(220, 24%, 60%, 1.00)',
-                        marginTop: '8px',
-                        fontStyle: 'italic',
-                        transition: 'color 0.4s ease',
+                        padding: '20px',
+                        backgroundColor: isFocusMode 
+                          ? 'hsla(43, 100%, 14%, 0.05)' 
+                          : 'hsla(220, 24%, 25%, 0.5)',
+                        border: `2px dashed ${isFocusMode 
+                          ? 'hsla(43, 100%, 14%, 0.2)' 
+                          : 'hsla(220, 24%, 40%, 1.00)'}`,
+                        borderRadius: '8px',
+                        textAlign: 'center' as const,
+                        transition: 'all 0.3s ease',
                       }}>
-                        Enter just the domain name (e.g., "example.com" not "https://www.example.com"). 
-                        Custom websites have experimental support and may not work perfectly.
+                        <div style={{
+                          fontSize: '0.95rem',
+                          color: isFocusMode 
+                            ? 'hsla(43, 100%, 14%, 0.6)' 
+                            : 'hsla(220, 24%, 60%, 1.00)',
+                          marginBottom: '8px',
+                          transition: 'color 0.4s ease',
+                        }}>
+                          Custom website support is in development
+                        </div>
+                        <div style={{
+                          fontSize: '0.8rem',
+                          color: isFocusMode 
+                            ? 'hsla(43, 100%, 14%, 0.5)' 
+                            : 'hsla(220, 24%, 50%, 1.00)',
+                          transition: 'color 0.4s ease',
+                        }}>
+                          We're working on expanding support to more websites beyond YouTube
+                        </div>
                       </div>
                     </div>
                   </div>

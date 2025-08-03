@@ -42,7 +42,12 @@ export const KeywordsProvider: React.FC<KeywordsProviderProps> = ({ children }) 
           setFocusKeywords(result.focusKeywords);
         }
         if (result.allowedWebsites) {
-          setAllowedWebsites(result.allowedWebsites);
+          // Ensure youtube.com is always included in allowed websites
+          const websites = result.allowedWebsites;
+          if (!websites.includes('youtube.com')) {
+            websites.unshift('youtube.com');
+          }
+          setAllowedWebsites(websites);
         }
       });
     }
@@ -72,8 +77,13 @@ export const KeywordsProvider: React.FC<KeywordsProviderProps> = ({ children }) 
   };
 
   const updateAllowedWebsites = (websites: string[]) => {
-    setAllowedWebsites(websites);
-    saveToStorage('allowedWebsites', websites);
+    // Ensure youtube.com is always included and cannot be removed
+    const updatedWebsites = [...websites];
+    if (!updatedWebsites.includes('youtube.com')) {
+      updatedWebsites.unshift('youtube.com');
+    }
+    setAllowedWebsites(updatedWebsites);
+    saveToStorage('allowedWebsites', updatedWebsites);
   };
 
   return (
