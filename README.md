@@ -13,15 +13,16 @@ A Chrome extension that helps you stay focused while browsing by filtering distr
 
 ### Option 1: Use Pre-built Release
 
-1. Download or clone this repository:
+1. Download from release or :
    ```bash
-   git clone https://github.com/aadil-sengupta/YtFocusMode.git
+   wget https://github.com/aadil-sengupta/YtFocusMode/releases/download/release/crx-focus-mode-1.0.0.zip
    ```
+2. Unzip the folder
 
-2. Load the extension in Chrome:
+3. Load the extension in Chrome:
    - Go to `chrome://extensions/`
    - Enable "Developer mode" 
-   - Click "Load unpacked" and select the `YtFocusMode/focusMode/dist` folder
+   - Click "Load unpacked" and select the unzipped folder
 
 ### Option 2: Build from Source
 
