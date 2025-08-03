@@ -214,7 +214,7 @@ function AppContent() {
             backdropFilter: 'blur(10px)',
             transition: 'all 0.5s ease',
             marginTop: '20px',
-            transform: 'translateY(48px)',
+            transform: 'translateY(42px)',
           }}>
             <div style={{
               width: '10px',
@@ -247,7 +247,17 @@ function AppContent() {
           textAlign: 'center',
           zIndex: 10,
         }}>
-
+          <div style={{
+            fontSize: '0.8rem',
+            color: isFocusMode 
+              ? 'hsla(43, 100%, 14%, 0.6)' 
+              : 'hsla(220, 24%, 60%, 1.00)',
+            transition: 'color 0.5s ease',
+            fontStyle: 'italic',
+            transform: 'translateY(18px)',
+          }}>
+            💡 Tip: Drag the cord to toggle focus mode
+          </div>
         </div>
 
         {/* CSS Animation for rotating glow */}

@@ -14,13 +14,10 @@ export default defineManifest({
     },
     default_popup: 'src/popup/index.html',
   },
+  options_page: 'src/settings/index.html',
   content_scripts: [{
     js: ['src/content/main.tsx'],
     matches: ['https://*/*'],
-  }],
-  web_accessible_resources: [{
-    resources: ['src/settings/index.html'],
-    matches: ['<all_urls>'],
   }],
   permissions: [
     'storage',

@@ -962,57 +962,6 @@ function SettingsContent() {
                     : 'hsla(220, 24%, 25%, 1.00)'}`,
                   borderRadius: '16px',
                   padding: '24px',
-                  marginBottom: '20px',
-                  transition: 'all 0.3s ease',
-                }}>
-                  <div style={{
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    color: isFocusMode 
-                      ? 'hsla(43, 100%, 14%, 1.00)' 
-                      : 'hsla(220, 24%, 85%, 1.00)',
-                    marginBottom: '12px',
-                    transition: 'color 0.4s ease',
-                  }}>
-                    Extension Information
-                  </div>
-                  <div style={{
-                    color: isFocusMode 
-                      ? 'hsla(43, 100%, 14%, 0.7)' 
-                      : 'hsla(220, 24%, 70%, 1.00)',
-                    lineHeight: 1.6,
-                    fontSize: '0.95rem',
-                    transition: 'color 0.4s ease',
-                    marginBottom: '16px',
-                  }}>
-                    YouTube Focus Mode is designed to help you stay focused by minimizing distractions while watching videos or browsing content. This extension creates a cleaner, more productive environment for your YouTube experience.
-                  </div>
-                  <div style={{
-                    color: isFocusMode 
-                      ? 'hsla(43, 100%, 14%, 0.7)' 
-                      : 'hsla(220, 24%, 70%, 1.00)',
-                    lineHeight: 1.6,
-                    fontSize: '0.95rem',
-                    transition: 'color 0.4s ease',
-                  }}>
-                    <strong>Key Features:</strong>
-                    <br />• Toggle focus mode on/off with a simple click
-                    <br />• Hide distracting content based on keywords
-                    <br />• Customize blacklisted and distraction keywords
-                    <br />• Beautiful, adaptive interface that changes with focus mode
-                    <br />• Persistent settings across browser sessions
-                  </div>
-                </div>
-
-                <div style={{
-                  background: isFocusMode 
-                    ? 'hsla(45, 30%, 96%, 1.00)' 
-                    : 'hsla(220, 30%, 20%, 1.00)',
-                  border: `2px solid ${isFocusMode 
-                    ? 'hsla(43, 100%, 14%, 0.15)' 
-                    : 'hsla(220, 24%, 25%, 1.00)'}`,
-                  borderRadius: '16px',
-                  padding: '24px',
                   transition: 'all 0.3s ease',
                 }}>
                   <div style={{
@@ -1038,7 +987,7 @@ function SettingsContent() {
                     <br /><br />
                     <strong>Distraction Keywords:</strong> Content containing these keywords will only be hidden when focus mode is enabled, allowing you to choose when to filter out entertainment content.
                     <br /><br />
-                    <strong>Focus Mode Toggle:</strong> When enabled, the extension filters content and provides visual cues to help maintain your focus and productivity.
+                    <strong>Focus Mode Toggle:</strong> When enabled, the extension filters content and provides visual cues to help maintain your focus and productivity. You can toggle focus mode by clicking the extension icon in your browser toolbar or by dragging the cord on the lightbulb.
                   </div>
                 </div>
               </div>
@@ -1055,6 +1004,7 @@ function SettingsContent() {
         <div style={{
           flex: 1,
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
@@ -1099,6 +1049,27 @@ function SettingsContent() {
                   height: '250px'
                 }} 
               />
+            </div>
+          </div>
+          
+          {/* Cord Dragging Tip */}
+          <div style={{
+            marginTop: '24px',
+            textAlign: 'center',
+            maxWidth: '280px',
+          }}>
+            <div style={{
+              fontSize: '0.9rem',
+              color: isFocusMode 
+                ? 'hsla(43, 100%, 14%, 0.6)' 
+                : 'hsla(220, 24%, 60%, 1.00)',
+              transition: 'color 0.4s ease',
+              fontStyle: 'italic',
+              fontWeight: 500,
+              lineHeight: 1.4,
+              transform: 'translateY(160px)',
+            }}>
+              💡 Drag the cord to toggle focus mode
             </div>
           </div>
         </div>

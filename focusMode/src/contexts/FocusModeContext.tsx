@@ -53,10 +53,8 @@ export const FocusModeProvider: React.FC<FocusModeProviderProps> = ({ children }
   };
 
   const openSettings = () => {
-    if (typeof chrome !== 'undefined' && chrome.tabs) {
-      chrome.tabs.create({
-        url: chrome.runtime.getURL('src/settings/index.html')
-      });
+    if (typeof chrome !== 'undefined' && chrome.runtime) {
+      chrome.runtime.openOptionsPage();
     }
   };
 
