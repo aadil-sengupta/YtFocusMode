@@ -260,7 +260,7 @@ function SettingsContent() {
               margin: 0,
               transition: 'color 0.4s ease',
             }}>
-              Configure your YouTube Focus Mode experience
+              Configure your filament.
             </p>
             
             {/* Tab Navigation */}
@@ -950,7 +950,7 @@ function SettingsContent() {
                     : 'hsla(220, 24%, 85%, 1.00)',
                   transition: 'color 0.4s ease',
                 }}>
-                  About YouTube Focus Mode
+                  About Focus Filament
                 </h2>
                 
                 <div style={{
@@ -988,6 +988,11 @@ function SettingsContent() {
                     <strong>Distraction Keywords:</strong> Content containing these keywords will only be hidden when focus mode is enabled, allowing you to choose when to filter out entertainment content.
                     <br /><br />
                     <strong>Focus Mode Toggle:</strong> When enabled, the extension filters content and provides visual cues to help maintain your focus and productivity. You can toggle focus mode by clicking the extension icon in your browser toolbar or by dragging the cord on the lightbulb.
+                    <br />
+                    <br />
+                               Made with ❤️ by <a href="https://www.linkedin.com/in/aadil-sengupta-9a0789165/" target="_blank"  style={{ textDecoration: 'underline',                     color: isFocusMode 
+                      ? 'hsla(43, 100%, 14%, 0.7)' 
+                      : 'hsla(220, 24%, 70%, 1.00)' }}>Aadil Sengupta</a>.
                   </div>
                 </div>
               </div>
@@ -996,7 +1001,7 @@ function SettingsContent() {
 
           {/* Footer */}
           <div style={{ marginTop: 'auto', paddingTop: '32px' }}>
-            {/* This space is intentionally left empty */}
+
           </div>
         </div>
 

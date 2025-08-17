@@ -59,7 +59,7 @@ function AppContent() {
               marginBottom: '2px',
               letterSpacing: '-0.02em',
             }}>
-              Focus
+              Filament Focus
             </h1>
             
             <p style={{
@@ -72,7 +72,7 @@ function AppContent() {
               fontWeight: 500,
               letterSpacing: '0.01em',
             }}>
-              YouTube distraction-free
+              The Internet, distraction free.
             </p>
           </div>
           
